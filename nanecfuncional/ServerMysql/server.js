@@ -46,8 +46,8 @@ app.get('/api/test', (req, res) => {
 });
  const allRestauranteRoutes = require('./routes/restaurante.routes');
  allRestauranteRoutes(app);
-// const allTipoComidaRoutes = require('./routes/tipocomida.routes');
-// allTipoComidaRoutes(app);
+ const allTipoComidaRoutes = require('./routes/tipocomida.routes');
+ allTipoComidaRoutes(app);
 // const allMenuRoutes = require('./routes/menu.routes');
 // allMenuRoutes(app);
 
