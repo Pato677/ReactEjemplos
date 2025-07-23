@@ -1,0 +1,413 @@
+/* Usuario.css */
+.usuario-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+.usuario-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Alertas */
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border: 1px solid;
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.alert-success {
+    background-color: #dcfce7;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+/* Sección del formulario */
+.form-section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+}
+
+.form-section h2 {
+    color: #374151;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.usuario-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.form-group input {
+    padding: 14px 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9fafb;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group small {
+    color: #6b7280;
+    font-size: 13px;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Sección de búsqueda */
+.search-section {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #c7d2fe;
+}
+
+.search-section h2 {
+    color: #374151;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.search-form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-input {
+    flex: 1;
+    padding: 14px 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Botones */
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    min-width: 120px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+    transform: translateY(-2px);
+}
+
+.btn-search {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    color: white;
+}
+
+.btn-search:hover:not(:disabled) {
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    transform: translateY(-2px);
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 80px;
+}
+
+.btn-edit:hover:not(:disabled) {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 80px;
+}
+
+.btn-delete:hover:not(:disabled) {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-1px);
+}
+
+/* Sección de lista */
+.list-section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+}
+
+.list-section h2 {
+    color: #374151;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.loading {
+    text-align: center;
+    padding: 60px;
+    color: #6b7280;
+    font-size: 18px;
+    background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.no-data {
+    text-align: center;
+    padding: 60px;
+    color: #6b7280;
+    font-size: 18px;
+    background: linear-gradient(45deg, #f9fafb, #f3f4f6);
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 2px dashed #d1d5db;
+}
+
+/* Grid de usuarios */
+.usuarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.usuario-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.usuario-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6);
+}
+
+.usuario-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.usuario-info h3 {
+    color: #1d4ed8;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.usuario-info p {
+    color: #6b7280;
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.usuario-info p strong {
+    color: #374151;
+    font-weight: 600;
+}
+
+.usuario-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    justify-content: center;
+}
+
+/* Estados de disponibilidad */
+.availability-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px white;
+}
+
+.available {
+    background-color: #10b981;
+}
+
+.unavailable {
+    background-color: #ef4444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .usuario-container {
+        padding: 15px;
+    }
+    
+    .form-section, .list-section, .search-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .usuarios-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .search-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .usuario-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .usuario-container h1 {
+        font-size: 2rem;
+    }
+    
+    .form-section h2, .list-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .usuario-container {
+        padding: 10px;
+    }
+    
+    .usuario-card {
+        padding: 20px;
+    }
+    
+    .usuario-container h1 {
+        font-size: 1.8rem;
+    }
+    
+    .usuarios-grid {
+        grid-template-columns: 1fr;
+    }
+}

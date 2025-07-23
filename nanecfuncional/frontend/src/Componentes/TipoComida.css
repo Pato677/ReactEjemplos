@@ -1,0 +1,321 @@
+/* TipoComida.css */
+.tipo-comida-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+.tipo-comida-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Alertas */
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border: 1px solid;
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.alert-success {
+    background-color: #dcfce7;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+/* Sección del formulario */
+.form-section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+}
+
+.form-section h2 {
+    color: #374151;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.tipo-comida-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.form-group input {
+    padding: 14px 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9fafb;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Botones */
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    min-width: 120px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+    transform: translateY(-2px);
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 80px;
+}
+
+.btn-edit:hover:not(:disabled) {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 80px;
+}
+
+.btn-delete:hover:not(:disabled) {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-1px);
+}
+
+/* Sección de lista */
+.list-section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+}
+
+.list-section h2 {
+    color: #374151;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.loading {
+    text-align: center;
+    padding: 60px;
+    color: #6b7280;
+    font-size: 18px;
+    background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.no-data {
+    text-align: center;
+    padding: 60px;
+    color: #6b7280;
+    font-size: 18px;
+    background: linear-gradient(45deg, #f9fafb, #f3f4f6);
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 2px dashed #d1d5db;
+}
+
+/* Grid de tipos */
+.tipos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.tipo-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tipo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06d6a0);
+}
+
+.tipo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.tipo-info h3 {
+    color: #1f2937;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.tipo-info p {
+    color: #6b7280;
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.tipo-info p strong {
+    color: #374151;
+    font-weight: 600;
+}
+
+.tipo-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tipo-comida-container {
+        padding: 15px;
+    }
+    
+    .form-section, .list-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .tipos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tipo-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .tipo-comida-container h1 {
+        font-size: 2rem;
+    }
+    
+    .form-section h2, .list-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tipo-comida-container {
+        padding: 10px;
+    }
+    
+    .tipo-card {
+        padding: 20px;
+    }
+    
+    .tipo-comida-container h1 {
+        font-size: 1.8rem;
+    }
+}
