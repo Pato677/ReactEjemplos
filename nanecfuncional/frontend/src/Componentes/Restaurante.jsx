@@ -57,19 +57,34 @@ const Restaurante = (props) => {
 */
     return (
         <div className="restaurante">
-
             <h1>{nombre}</h1>
-            <h2>{direccion}</h2>
-            <h3>{tipo}</h3>
+            <h2>📍 {direccion}</h2>
+            <h3>🍽️ {tipo}</h3>
             <img src={url} alt={nombre} />
-            <h4>Likes: {preferencia.likes}</h4>
-            <button onClick={handlerLike}>Like</button>
-            <h4>Dislikes: {preferencia.dislikes}</h4>
-            <button onClick={handlerDislike}>Dislike</button><br></br>
-            <button onClick={()=> oneliminar(id)}>Eliminar</button><br></br>
-            <button onClick={actualizar}>Actualizar</button>
             
-
+            <div className="likes-container">
+                <div className="like-section">
+                    <h4>👍 Likes: {preferencia.likes}</h4>
+                    <button onClick={handlerLike} className="btn btn-like">
+                        👍 Me Gusta
+                    </button>
+                </div>
+                <div className="like-section">
+                    <h4>👎 Dislikes: {preferencia.dislikes}</h4>
+                    <button onClick={handlerDislike} className="btn btn-dislike">
+                        👎 No Me Gusta
+                    </button>
+                </div>
+            </div>
+            
+            <div className="action-buttons">
+                <button onClick={() => oneliminar(id)} className="btn btn-delete">
+                    🗑️ Eliminar
+                </button>
+                <button onClick={actualizar} className="btn btn-edit">
+                    ✏️ Editar
+                </button>
+            </div>
         </div>
     );
 };

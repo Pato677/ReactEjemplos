@@ -1,26 +1,256 @@
-body,html{
-    width: 100%;
-    height: 100%;
-}
-div{
-    width: 100%;
-    height: 100%;
-}
-img{
-    width: 20%;
-    height: 20%;
-}
-div#restaurantes{
+/* Estilos para el componente de Restaurantes */
+.restaurante {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin: 20px auto;
+    max-width: 600px;
+    width: 90%;
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: rgb(4, 165, 165);
+    text-align: center;
 }
 
-h1{
-    color: rgb(151, 22, 22);
-    font-size: 2rem;
+.restaurante:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.restaurante h1 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.restaurante h2 {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.restaurante h3 {
+    color: #888;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.restaurante h4 {
+    color: #555;
+    font-size: 1rem;
+    margin: 10px 0 5px 0;
+    font-weight: 600;
+}
+
+.restaurante img {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.restaurante img:hover {
+    transform: scale(1.05);
+}
+
+/* Contenedor para los botones de likes */
+.likes-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 15px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.like-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Contenedor para los botones de acción */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Estilos específicos para botones de restaurante */
+.restaurante .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+    justify-content: center;
+}
+
+.restaurante .btn-like {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.restaurante .btn-like:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+}
+
+.restaurante .btn-dislike {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: white;
+}
+
+.restaurante .btn-dislike:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.restaurante .btn-delete {
+    background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+    color: white;
+}
+
+.restaurante .btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(225, 112, 85, 0.4);
+}
+
+.restaurante .btn-edit {
+    background: linear-gradient(135deg, #feca57 0%, #ff9ff3 100%);
+    color: white;
+}
+
+.restaurante .btn-edit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(254, 202, 87, 0.4);
+}
+
+/* Contenedor principal de restaurantes */
+#restaurantes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: transparent;
+    padding: 20px;
+    min-height: auto;
+    width: 100%;
+}
+
+/* Encabezados globales en restaurantes */
+.restaurantes-header {
     text-align: center;
+    margin-bottom: 30px;
+}
+
+.restaurantes-header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+}
+
+.restaurantes-header h2 {
+    color: #666;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/* Contenedor de estadísticas */
+.stats-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.stats-card {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(79, 172, 254, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-3px);
+}
+
+.stats-card h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Responsive para restaurantes */
+@media (max-width: 768px) {
+    .restaurante {
+        max-width: 95%;
+        padding: 20px;
+        margin: 15px auto;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .likes-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .restaurante .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .restaurante img {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .restaurante h1 {
+        font-size: 1.5rem;
+    }
+    
+    .restaurante {
+        padding: 16px;
+    }
+    
+    .restaurante .btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
 }
 

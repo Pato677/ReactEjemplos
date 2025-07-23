@@ -33,31 +33,52 @@ const Listarestaurantes = (props) => {
 
 
   return (
-    <div>
-      <Link to="/home">Volver a la lista de restaurantes</Link>
+    <div className="container">
+      <div className="restaurantes-header">
+        <h1>🍽️ Lista de Restaurantes</h1>
+        <div className="stats-container">
+          <div className="stats-card">
+            <h2>❤️ Likes Totales: {likesTotales}</h2>
+          </div>
+          {mensaje && (
+            <div className="message message-error">
+              ⚠️ {mensaje}
+            </div>
+          )}
+        </div>
+        <div className="action-buttons">
+          <Link to="/home" className="btn btn-secondary">
+            🏠 Volver al Inicio
+          </Link>
+          <Link to="/crear-restaurante" className="btn btn-primary">
+            ➕ Crear Nuevo Restaurante
+          </Link>
+        </div>
+      </div>
 
-      <h2>Registrar nuevo restaurante</h2>
-      <h1>Likes totales: </h1>
-      <h2>{likesTotales}</h2>
-      <h1>{mensaje}</h1>
-      {restaurantes.map((restaurante, index) => (
-        <Restaurante
-          key={index}
-          nombre={restaurante.nombre}
-          id={restaurante.id}
-          direccion={restaurante.direccion}
-          tipo={restaurante.tipo}
-          url={restaurante.url}
-          onlike={actualizarLikes}
-          onDislike={actualizarDislikes}
-          oneliminar={() => oneliminar(restaurante.id)}
-          
-          
-       />
-      ))}
-
+      <div id="restaurantes">
+        {restaurantes.length === 0 ? (
+          <div className="card text-center">
+            <h3>😔 No hay restaurantes registrados</h3>
+            <p>¡Empieza creando tu primer restaurante!</p>
+          </div>
+        ) : (
+          restaurantes.map((restaurante, index) => (
+            <Restaurante
+              key={restaurante.id || index}
+              nombre={restaurante.nombre}
+              id={restaurante.id}
+              direccion={restaurante.direccion}
+              tipo={restaurante.tipo}
+              url={restaurante.url}
+              onlike={actualizarLikes}
+              onDislike={actualizarDislikes}
+              oneliminar={() => oneliminar(restaurante.id)}
+            />
+          ))
+        )}
+      </div>
     </div>
-
   );
 }
 
