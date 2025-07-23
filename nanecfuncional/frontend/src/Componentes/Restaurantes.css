@@ -1,0 +1,26 @@
+body,html{
+    width: 100%;
+    height: 100%;
+}
+div{
+    width: 100%;
+    height: 100%;
+}
+img{
+    width: 20%;
+    height: 20%;
+}
+div#restaurantes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(4, 165, 165);
+}
+
+h1{
+    color: rgb(151, 22, 22);
+    font-size: 2rem;
+    text-align: center;
+}
+

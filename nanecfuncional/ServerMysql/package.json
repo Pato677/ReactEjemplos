@@ -1,0 +1,18 @@
+{
+  "name": "restaurantes-server",
+  "version": "1.0.0",
+  "description": "Servidor para la aplicación de restaurantes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "nodemon": "npx nodemon server.js",
+    "dev": "npx nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mysql2": "^3.14.2",
+    "nodemon": "^3.1.10",
+    "sequelize": "^6.37.7"
+  }
+}
