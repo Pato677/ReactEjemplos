@@ -50,6 +50,8 @@ app.get('/api/test', (req, res) => {
  allTipoComidaRoutes(app);
  const allMenuRoutes = require('./routes/menu.routes');
  allMenuRoutes(app);
+ const allUsuarioRoutes = require('./routes/usuario.routes');
+   allUsuarioRoutes(app);
 
 // Iniciar servidor y base de datos
 app.listen(port, async () => {
