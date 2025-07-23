@@ -48,8 +48,8 @@ app.get('/api/test', (req, res) => {
  allRestauranteRoutes(app);
  const allTipoComidaRoutes = require('./routes/tipocomida.routes');
  allTipoComidaRoutes(app);
-// const allMenuRoutes = require('./routes/menu.routes');
-// allMenuRoutes(app);
+ const allMenuRoutes = require('./routes/menu.routes');
+ allMenuRoutes(app);
 
 // Iniciar servidor y base de datos
 app.listen(port, async () => {
