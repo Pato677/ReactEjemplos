@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "nodemon": "npx nodemon server.js",
-    "dev": "npx nodemon server.js"
+    "dev": "npx nodemon server.js",
+    "migrate": "node migrations/add-password-column.js",
+    "test-user": "node test-create-user.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
