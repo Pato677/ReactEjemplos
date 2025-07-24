@@ -6,7 +6,8 @@ const Usuario = () => {
     const [usuarios, setUsuarios] = useState([]);
     const [formData, setFormData] = useState({
         username: '',
-        email: ''
+        email: '',
+        password: ''
     });
     const [editingId, setEditingId] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -70,8 +71,13 @@ const Usuario = () => {
     // Crear nuevo usuario
     const handleCreate = async (e) => {
         e.preventDefault();
-        if (!formData.username.trim() || !formData.email.trim()) {
+        if (!formData.username.trim() || !formData.email.trim() || !formData.password.trim()) {
             setError('Todos los campos son obligatorios');
+            return;
+        }
+
+        if (formData.password.length < 6) {
+            setError('La contraseña debe tener al menos 6 caracteres');
             return;
         }
 
@@ -79,7 +85,7 @@ const Usuario = () => {
             setLoading(true);
             await axios.post(`${API_URL}/usuario/new`, formData);
             setSuccess('Usuario creado exitosamente');
-            setFormData({ username: '', email: '' });
+            setFormData({ username: '', email: '', password: '' });
             fetchUsuarios();
             setError('');
         } catch (error) {
@@ -94,15 +100,26 @@ const Usuario = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
         if (!formData.username.trim() || !formData.email.trim()) {
-            setError('Todos los campos son obligatorios');
+            setError('Username y email son obligatorios');
+            return;
+        }
+
+        if (formData.password && formData.password.length < 6) {
+            setError('La contraseña debe tener al menos 6 caracteres (opcional)');
             return;
         }
 
         try {
             setLoading(true);
-            await axios.put(`${API_URL}/usuario/${editingId}`, formData);
+            // Solo enviar contraseña si fue proporcionada
+            const updateData = { username: formData.username, email: formData.email };
+            if (formData.password.trim()) {
+                updateData.password = formData.password;
+            }
+            
+            await axios.put(`${API_URL}/usuario/${editingId}`, updateData);
             setSuccess('Usuario actualizado exitosamente');
-            setFormData({ username: '', email: '' });
+            setFormData({ username: '', email: '', password: '' });
             setEditingId(null);
             fetchUsuarios();
             setError('');
@@ -138,7 +155,8 @@ const Usuario = () => {
     const handleEdit = (usuario) => {
         setFormData({
             username: usuario.username,
-            email: usuario.email
+            email: usuario.email,
+            password: '' // No mostrar la contraseña actual por seguridad
         });
         setEditingId(usuario.id);
         setError('');
@@ -147,7 +165,7 @@ const Usuario = () => {
 
     // Cancelar edición
     const handleCancelEdit = () => {
-        setFormData({ username: '', email: '' });
+        setFormData({ username: '', email: '', password: '' });
         setEditingId(null);
         setError('');
         setSuccess('');
@@ -224,6 +242,29 @@ const Usuario = () => {
                             maxLength="100"
                         />
                         <small>Formato de email válido, máximo 100 caracteres</small>
+                    </div>
+                    
+                    <div className="form-group">
+                        <label htmlFor="password">
+                            Contraseña {editingId ? '(opcional - dejar vacío para no cambiar)' : ''}:
+                        </label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleInputChange}
+                            placeholder={editingId ? "Nueva contraseña (opcional)" : "Mínimo 6 caracteres"}
+                            required={!editingId}  // Obligatorio solo al crear
+                            minLength="6"
+                            maxLength="100"
+                        />
+                        <small>
+                            {editingId 
+                                ? 'Dejar vacío si no deseas cambiar la contraseña' 
+                                : 'Mínimo 6 caracteres, máximo 100'
+                            }
+                        </small>
                     </div>
                     
                     <div className="form-actions">

@@ -25,3 +25,4 @@ module.exports = function(app){
     app.get('/api/usuario/check/username/:username', UsuarioController.checkUsernameAvailability);
     app.get('/api/usuario/check/email/:email', UsuarioController.checkEmailAvailability);
 };
+

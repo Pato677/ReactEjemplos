@@ -96,18 +96,31 @@ module.exports.loginUser = async (req, res) => {
 // Crear un usuario (método alternativo manteniendo compatibilidad)
 module.exports.createUsuario = async (request, response) => {
     const { username, email, password } = request.body;
+    
+    // Validar que todos los campos obligatorios estén presentes
+    if (!username || !email || !password) {
+        return response.status(400).json({
+            message: 'Todos los campos son obligatorios',
+            required: ['username', 'email', 'password'],
+            missing: {
+                username: !username,
+                email: !email,
+                password: !password
+            }
+        });
+    }
+    
     try {
-        let hashedPassword = null;
-        if (password) {
-            const salt = await bcrypt.genSalt(10);
-            hashedPassword = await bcrypt.hash(password, salt);
-        }
+        // Hashear la contraseña siempre (ya que es obligatoria)
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
         
         const usuario = await Usuario.create({ 
             username, 
             email,
             password: hashedPassword
         });
+        
         response.status(201).json({
             message: 'Usuario creado exitosamente',
             data: {
@@ -194,7 +207,7 @@ module.exports.getUsuario = async (request, response) => {
 
 // Actualizar un usuario
 module.exports.updateUsuario = async (request, response) => {
-    const { username, email } = request.body;
+    const { username, email, password } = request.body;
     try {
         const usuario = await Usuario.findOne({ 
             where: { id: request.params.id } 
@@ -206,14 +219,28 @@ module.exports.updateUsuario = async (request, response) => {
             });
         }
 
-        await usuario.update({
+        // Preparar los datos a actualizar
+        const updateData = {
             username: username || usuario.username,
             email: email || usuario.email
-        });
+        };
+
+        // Si se proporciona una nueva contraseña, hashearla
+        if (password && password.trim()) {
+            const salt = await bcrypt.genSalt(10);
+            updateData.password = await bcrypt.hash(password, salt);
+        }
+
+        await usuario.update(updateData);
 
         response.json({
             message: 'Usuario actualizado exitosamente',
-            data: usuario
+            data: {
+                id: usuario.id,
+                username: usuario.username,
+                email: usuario.email,
+                updatedAt: usuario.updatedAt
+            }
         });
     } catch (err) {
         if (err.name === 'SequelizeValidationError') {
