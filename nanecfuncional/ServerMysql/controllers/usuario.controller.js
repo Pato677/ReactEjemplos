@@ -1,16 +1,121 @@
 const Usuario = require('../models/usuario.model');
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
-// Crear un nuevo usuario
-module.exports.createUsuario = async (request, response) => {
-    const { username, email } = request.body;
+
+
+//generamos el token 
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {expiresIn: '30d'});
+};
+
+// Crear un nuevo usuario con contraseña hasheada
+module.exports.createUser = async (request, response) => {
+    const { userName, email, password } = request.body;
+    
+    if (!userName || !email || !password) {
+        return response.status(400).json({ message: 'Missing fields, all are mandatory!' });
+    }
+    
     try {
+        const userFound = await Usuario.findOne({ 
+            where: { email: email } 
+        });
+        
+        if (userFound) {
+            return response.status(400).json({ message: 'User already exist' });
+        }
+        
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        
+        const newUser = await Usuario.create({
+            username: userName,
+            email: email,
+            password: hashedPassword
+        });
+        
+        response.status(201).json({
+            email: newUser.email,
+            userName: newUser.username,
+            _id: newUser.id,
+            token: generateToken(newUser.id)
+        });
+        
+    } catch (err) {
+        if (err.name === 'SequelizeValidationError') {
+            response.status(400).json({
+                message: 'Error de validación',
+                errors: err.errors.map(error => error.message)
+            });
+        } else if (err.name === 'SequelizeUniqueConstraintError') {
+            const field = err.errors[0].path;
+            response.status(409).json({
+                message: `User already exist with this ${field}`
+            });
+        } else {
+            response.status(400).json(err);
+        }
+    }
+};
+
+// Iniciar sesión de usuario
+module.exports.loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Email and password are required' });
+    }
+    
+    try {
+        const userFound = await Usuario.findOne({ 
+            where: { email: email } 
+        });
+        
+        console.log('Usuario encontrado: ', userFound);
+        
+        if (userFound && (await bcrypt.compare(password, userFound.password))) {
+            res.json({
+                message: 'Login User',
+                email: userFound.email,
+                userName: userFound.username,
+                token: generateToken(userFound.id)
+            });
+        } else {
+            res.status(400).json({ message: 'Login Failed' });
+        }
+    } catch (err) {
+        res.status(500).json({
+            message: 'Error during login',
+            error: err.message
+        });
+    }
+};
+
+// Crear un usuario (método alternativo manteniendo compatibilidad)
+module.exports.createUsuario = async (request, response) => {
+    const { username, email, password } = request.body;
+    try {
+        let hashedPassword = null;
+        if (password) {
+            const salt = await bcrypt.genSalt(10);
+            hashedPassword = await bcrypt.hash(password, salt);
+        }
+        
         const usuario = await Usuario.create({ 
             username, 
-            email
+            email,
+            password: hashedPassword
         });
         response.status(201).json({
             message: 'Usuario creado exitosamente',
-            data: usuario
+            data: {
+                id: usuario.id,
+                username: usuario.username,
+                email: usuario.email,
+                createdAt: usuario.createdAt
+            }
         });
     } catch (err) {
         if (err.name === 'SequelizeValidationError') {

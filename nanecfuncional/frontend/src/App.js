@@ -7,6 +7,7 @@ import ObtenerRestaurantes from './Componentes/AxiosObtenerRestaurantes';
 import ActualizarRestaurantes from './Componentes/ActualizarRestaurantes';
 import TipoComida from './Componentes/TipoComida';
 import Usuario from './Componentes/Usuario';
+import Auth from './Componentes/Auth';
 import Navigation from './Componentes/Navigation';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -110,6 +111,7 @@ function App() {
           <Route path="/actualizarrestaurantes/:id" element={<ActualizarRestaurantes lrestaurantes = {lrestaurantes} setlrestaurantes= {setlrestaurantes} actualizarRestaurante = {actualizarRestaurante} />} />
           <Route path={"/tipos-comida"} element={<TipoComida/>} />
           <Route path={"/usuarios"} element={<Usuario/>} />
+          <Route path={"/auth"} element={<Auth/>} />
         </Routes>
       </BrowserRouter>
       

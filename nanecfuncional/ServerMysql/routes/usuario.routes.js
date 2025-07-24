@@ -1,6 +1,10 @@
 const UsuarioController = require('../controllers/usuario.controller');
 
 module.exports = function(app){
+    // Rutas de autenticación
+    app.post('/api/auth/register', UsuarioController.createUser);
+    app.post('/api/auth/login', UsuarioController.loginUser);
+    
     // Rutas CRUD básicas
     app.post('/api/usuario/new', UsuarioController.createUsuario);
     app.get('/api/usuarios', UsuarioController.getAllUsuarios);

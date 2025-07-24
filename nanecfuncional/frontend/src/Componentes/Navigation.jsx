@@ -36,6 +36,11 @@ const Navigation = () => {
                             👥 Usuarios
                         </Link>
                     </li>
+                    <li className="nav-item">
+                        <Link to="/auth" className="nav-link">
+                            🔐 Autenticación
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </nav>
